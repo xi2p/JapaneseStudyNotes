@@ -1,0 +1,203 @@
+%! TeX program = xelatex
+
+% 参考 https://blog.csdn.net/weixinhum/article/details/121056868, https://zhuanlan.zhihu.com/p/357926809, https://zhuanlan.zhihu.com/p/55043560, https://www.zhihu.com/question/264248150
+% \special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
+
+
+\documentclass{note}
+
+\usepackage{ctex, draftwatermark, everypage}
+\SetWatermarkText{CC98: xi2p}
+\SetWatermarkLightness{0.95}
+\SetWatermarkScale{0.4}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                               COVER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+% 参考https://tex.stackexchange.com/questions/23766/suppress-fancy-header-and-footer-on-first-page-only
+% 参考https://tex.stackexchange.com/questions/57158/centered-title-page-in-twoside-report
+
+% Cover page
+% \includepdf[pages=-, fitpaper]{cover/cover.pdf}
+
+% Title page
+\input{title-page/title-page.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                           FRONTMATTER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \frontmatter
+\input{part/preface.tex}
+
+\newpage
+
+Table of contents
+{
+    \pagenumbering{Alph} % 目录页码编号为大写字母
+    \hypersetup{linkcolor=red!65!black} % 设置局部目录超链接颜色
+    \hypersetup{linkcolor=black} % 设置局部目录超链接颜色
+    \tableofcontents
+}
+
+
+% ==================================================================
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            MAINMATTER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+
+% 每个部分就是一个.tex文件，方便后续的调试
+\setcounter{chapter}{9}
+
+\begingroup
+    % 避免 part 后自动插入空白页（在某些类/设置下会产生插页），临时将 \cleardoublepage 变为 \clearpage
+    \let\origcleardoublepage\cleardoublepage
+    \let\cleardoublepage\clearpage
+    \part{日语Ⅰ}
+\endgroup
+
+\setcounter{chapter}{10}
+\input{part/11.tex}
+
+\setcounter{chapter}{11}
+\input{part/12.tex}
+
+\setcounter{chapter}{12}
+\input{part/13.tex}
+
+\setcounter{chapter}{13}
+\input{part/14.tex}
+
+
+\begingroup
+    \let\origcleardoublepage\cleardoublepage
+    \let\cleardoublepage\clearpage
+    \part{日语Ⅱ}
+\endgroup
+
+\setcounter{chapter}{15}
+\input{part/16.tex}
+
+\setcounter{chapter}{17}
+\input{part/18.tex}
+
+\setcounter{chapter}{18}
+\input{part/19.tex}
+
+\setcounter{chapter}{19}
+\input{part/20.tex}
+
+\setcounter{chapter}{20}
+\input{part/21.tex}
+
+\setcounter{chapter}{21}
+\input{part/22.tex}
+
+\setcounter{chapter}{22}
+\input{part/23.tex}
+
+\setcounter{chapter}{23}
+\input{part/24.tex}
+
+\setcounter{chapter}{24}
+\input{part/25.tex}
+
+\setcounter{chapter}{26}
+\input{part/27.tex}
+
+\setcounter{chapter}{27}
+\input{part/28.tex}
+
+\setcounter{chapter}{28}
+\input{part/29.tex}
+
+\setcounter{chapter}{29}
+\input{part/30.tex}
+
+\begingroup
+    \let\origcleardoublepage\cleardoublepage
+    \let\cleardoublepage\clearpage
+    \part{日语Ⅲ}
+\endgroup
+
+\setcounter{chapter}{30}
+\input{part/31.tex}
+
+\setcounter{chapter}{31}
+\input{part/32.tex}
+
+\setcounter{chapter}{32}
+\input{part/33.tex}
+
+\setcounter{chapter}{33}
+\input{part/34.tex}
+
+\setcounter{chapter}{34}
+\input{part/35.tex}
+
+\setcounter{chapter}{35}
+\input{part/36.tex}
+
+\setcounter{chapter}{36}
+\input{part/37.tex}
+
+\setcounter{chapter}{37}
+\input{part/38.tex}
+
+\setcounter{chapter}{38}
+\input{part/39.tex}
+
+\setcounter{chapter}{39}
+\input{part/40.tex}
+
+\setcounter{chapter}{40}
+\input{part/41.tex}
+
+\setcounter{chapter}{41}
+\input{part/42.tex}
+
+\setcounter{chapter}{42}
+\input{part/43.tex}
+
+\setcounter{chapter}{43}
+\input{part/44.tex}
+
+\setcounter{chapter}{44}
+\input{part/45.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            BACKMATTER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \backmatter
+
+\input{part/afterword.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            ACKNOWLEDGEMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{part/acknowledgements.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \appendix
+\input{part/appendix.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            REFERENCES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliography{references}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            INDEX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 显示索引页的首字母，参考 https://tex.stackexchange.com/questions/53986/package-makeidx-print-first-letter-for-each-group-of-keys
+\printindex
+
+\end{document}
