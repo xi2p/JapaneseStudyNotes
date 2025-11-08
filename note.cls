@@ -663,39 +663,12 @@
     #1
 }
 
-%----------------------------------------------------%
-%                 Structure box                      %
-%----------------------------------------------------%
-\NewDocumentEnvironment{structure}{O{} +b}{%
-    \begin{tikzpicture}
-        % 先绘制主框
-        \node[rectangle, 
-              draw=gray, 
-              line width=0.5pt, 
-              fill=white, 
-              minimum width=\linewidth,
-              inner sep=8pt, % 减少左右内边距
-              text width=0.92\linewidth] (content) {\vspace*{0pt}\begin{minipage}{\textwidth}#2\end{minipage}\vspace*{5pt}}; % 增加上下间距
-        
-        % 在右上角绘制截断边框的"结构"标签
-        \begin{scope}
-            % 白色背景覆盖边框
-            \fill[white] ([xshift=-1.5cm, yshift=2pt] content.north east) rectangle ([xshift=8pt, yshift=-8pt] content.north east); % 调整覆盖区域
-            
-            % 绘制"结构"文字
-            \node[anchor=east, 
-                  inner sep=2pt, 
-                  font=\bfseries\small] 
-                  at ([xshift=-8pt, yshift=0pt] content.north east) {结构}; % xshift从-5pt改为-8pt
-        \end{scope}
-    \end{tikzpicture}
-    \par\vspace{5pt}
-}{}
 
 %----------------------------------------------------%
 %                 Example box                        %
 %----------------------------------------------------%
 \NewDocumentEnvironment{example}{O{} +b}{%
+    \noindent
     \begin{tikzpicture}
         % 先绘制主框
         \node[rectangle, 
